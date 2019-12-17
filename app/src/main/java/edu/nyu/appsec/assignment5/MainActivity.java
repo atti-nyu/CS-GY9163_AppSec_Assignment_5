@@ -49,26 +49,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     *  Supported languages ar-DZ zh-CN en-US en-IN en-AU fr-FR
     */
     @Override
-    public void onLocationChanged(Location location) {
-        URL url = null;
-        try {
-            url = new URL(SPELL_CHECK_URL + "metrics"
-                    +"?lat="
-                    +location.getLatitude()+"&long=" + location.getLongitude()
-            );
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return;
-        }
 
-        HttpURLConnection urlConnection = null;
-        try {
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public void onLocationChanged(Location location) {
 
     /* Necessary to implement the LocationListener interface
     */
@@ -94,12 +76,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         settings.setJavaScriptEnabled(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
-
+       
         setContentView(view);
         view.loadUrl(SPELL_CHECK_URL + "register");
     }
