@@ -25,7 +25,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
     private static final String SPELL_CHECK_URL = "http://appsecclass.report:8080/";
     private static final String KNOWN_HOST = "appsecclass.report";
 
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     */
     @Override
 
-    public void onLocationChanged(Location location) {
 
     /* Necessary to implement the LocationListener interface
     */
@@ -80,4 +78,4 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setContentView(view);
         view.loadUrl(SPELL_CHECK_URL + "register");
     }
-}
+
